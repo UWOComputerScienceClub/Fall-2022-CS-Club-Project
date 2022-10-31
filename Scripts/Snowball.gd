@@ -16,9 +16,15 @@ func start(pos, dir):
 func _physics_process(delta):
 	velocity.y += weight * gravity * delta;
 	
+	if (is_on_floor() || is_on_wall()): # Added
+		queue_free();
+	
+	velocity = move_and_slide(velocity, Vector2.UP) # Added
+	
 	var collision = move_and_collide(velocity * delta);
 	if collision:
-		queue_free();
+		#queue_free(); # Removed
+		pass
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free();

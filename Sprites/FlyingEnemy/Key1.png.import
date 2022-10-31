@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ground.png-19dd19062ae149a099889071e7b87881.stex"
+path="res://.import/Key1.png-4dfc14e85265a7e00cef79493034bdd8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ground.png"
-dest_files=[ "res://.import/ground.png-19dd19062ae149a099889071e7b87881.stex" ]
+source_file="res://Sprites/FlyingEnemy/Key1.png"
+dest_files=[ "res://.import/Key1.png-4dfc14e85265a7e00cef79493034bdd8.stex" ]
 
 [params]
 
