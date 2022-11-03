@@ -34,8 +34,8 @@ export var spawnerProperties = {
 # ----------------- Preloading Objects ----------------- #
 
 # Preloads all enemy types
-var walkingEnemy = preload("res://Scenes/Objects/WalkingEnemy.tscn")
-var flyingEnemy = preload("res://Scenes/Objects/FlyingEnemy.tscn")
+var walkingEnemy = preload("res://Scenes/Objects/Enemies/WalkingEnemy/WalkingEnemy.tscn")
+var flyingEnemy = preload("res://Scenes/Objects/Enemies/FlyingEnemy/FlyingEnemy.tscn")
 #...
 #...
 #...
@@ -71,8 +71,6 @@ func summon_enemy():
 	match (enemyType):
 		"Walking Enemy":
 			enemy = walkingEnemy.instance()
-		"Flying Enemy":
-			enemy = flyingEnemy.instance()
 		_:
 			enemy = flyingEnemy.instance()
 

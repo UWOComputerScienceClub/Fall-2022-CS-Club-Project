@@ -4,7 +4,7 @@ export var speed = 200;
 export var jumpForce = 600;
 export var gravity = 800;
 
-var snowball = preload("res://Scenes/Objects/Snowball.tscn");
+var snowball = preload("res://Scenes/Objects/Player/Player Projectiles/Snowball.tscn");
 
 var velocity = Vector2();
 var direction = Vector2.ZERO;

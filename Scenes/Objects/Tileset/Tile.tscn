@@ -6,6 +6,7 @@
 extents = Vector2( 96, 95 )
 
 [node name="Tile" type="StaticBody2D"]
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

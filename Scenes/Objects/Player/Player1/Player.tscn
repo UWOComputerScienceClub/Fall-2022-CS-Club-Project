@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Sprites/Player/player.png" type="Texture" id=1]
-[ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Objects/Player/Player1/Player.gd" type="Script" id=2]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -19,7 +19,7 @@ extents = Vector2( 84, 84 )
 
 [node name="Player" type="KinematicBody2D"]
 scale = Vector2( 0.25, 0.25 )
-collision_mask = 0
+collision_layer = 4
 script = ExtResource( 2 )
 speed = 300
 gravity = 1200
