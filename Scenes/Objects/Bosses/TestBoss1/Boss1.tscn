@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Scenes/Objects/Enemies/WalkingEnemy/WalkingEnemy.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Objects/Bosses/TestBoss1/Boss1.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Objects/Components/HealthBar.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Objects/Components/EnemyHitbox.gd" type="Script" id=3]
 [ext_resource path="res://Sprites/TestEnemy/tile000.png" type="Texture" id=4]
@@ -33,7 +33,7 @@ bg_color = Color( 0.223529, 0.192157, 0.192157, 1 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 20, 26 )
 
-[node name="WalkingEnemy" type="KinematicBody2D"]
+[node name="Boss1" type="KinematicBody2D"]
 collision_layer = 2
 script = ExtResource( 1 )
 
@@ -50,16 +50,15 @@ collision_layer = 2
 script = ExtResource( 3 )
 
 [node name="HealthBar" type="ProgressBar" parent="EnemyHitbox"]
-margin_left = -21.0
-margin_top = -34.0
-margin_right = 55.0
-margin_bottom = -20.0
+margin_left = -15.0
+margin_top = -33.0
+margin_right = 39.0
+margin_bottom = -19.0
 rect_scale = Vector2( 0.5, 0.5 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_styles/fg = SubResource( 4 )
 custom_styles/bg = SubResource( 5 )
 value = 100.0
-percent_visible = false
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]

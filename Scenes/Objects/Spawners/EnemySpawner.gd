@@ -5,6 +5,9 @@ extends Area2D
 onready var timer = get_node("Timer");
 export var repeatSpawn = false;
 export var secondsBetweenSpawns: float
+var spawns = 0
+var delayStart = true
+export var maxSpawns = 20
 
 # ----------------- Enemy Properties ----------------- #
 
@@ -36,6 +39,7 @@ export var spawnerProperties = {
 # Preloads all enemy types
 var walkingEnemy = preload("res://Scenes/Objects/Enemies/WalkingEnemy/WalkingEnemy.tscn")
 var flyingEnemy = preload("res://Scenes/Objects/Enemies/FlyingEnemy/FlyingEnemy.tscn")
+var dashingEnemy = preload("res://Scenes/Objects/Enemies/DashingEnemy/DashingEnemy.tscn")
 #...
 #...
 #...
@@ -48,20 +52,21 @@ func _ready():
 	modulate.a = 0.5
 	
 	# Timer setup
-	if (repeatSpawn):
-		timer.set_wait_time(secondsBetweenSpawns)
-		timer.start()
-	call_deferred("summon_enemy")
+	timer.set_wait_time(secondsBetweenSpawns)
 
-func _process(delta):
+func _process(_delta):
+	if (delayStart):
+		timer.start()
+		delayStart = false
 	if (spawnerProperties["Movement Type"] != "Static"):
 		position += spawnerProperties["Movement"];
 		pass
 	
 # Summons enemies based on timer value (set in editor)
 func _on_Timer_timeout():
-	call_deferred("summon_enemy")
-	pass # Replace with function body.
+	spawns += 1
+	if (spawns <= maxSpawns):
+		call_deferred("summon_enemy")
 
 # Summon enemies
 func summon_enemy():
@@ -71,8 +76,12 @@ func summon_enemy():
 	match (enemyType):
 		"Walking Enemy":
 			enemy = walkingEnemy.instance()
-		_:
+		"Dashing Enemy":
+			enemy = dashingEnemy.instance()
+		"Flying Enemy":
 			enemy = flyingEnemy.instance()
+		_:
+			enemy = walkingEnemy.instance()
 
 	# Setup for instanced enemy
 	enemy.position = Vector2(position.x, position.y)

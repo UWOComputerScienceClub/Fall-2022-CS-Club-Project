@@ -1,7 +1,7 @@
 extends "res://Scenes/Objects/Enemies/Base/BasicEnemy.gd"
 
 #------------#
-# Le Goomba. #
+# First Boss. #
 #------------#
 
 func _ready():

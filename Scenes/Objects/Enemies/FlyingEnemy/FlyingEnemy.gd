@@ -4,13 +4,20 @@ extends "res://Scenes/Objects/Enemies/Base/BasicEnemy.gd"
 # Le Goomba. #
 #------------#
 
+var time = 0
+var rng = RandomNumberGenerator.new()
+var amplitude
+var frequency
+
 func _ready():
-	
-	gravity = 800
-	movement_speed = 20
+	rng.randomize()
+	gravity = 8
+	movement_speed = 200
 	direction = 1
-	maxHealth = 5
-	
+	maxHealth = 3
+	amplitude = 6
+	frequency = 11
+	health = maxHealth
 	animationHandler("idle", true)
 	
 func _physics_process(delta):
@@ -20,8 +27,11 @@ func _physics_process(delta):
 
 # Handles movement.
 func movementLogic(delta):
+	time += delta
 	velocity.x = movement_speed * direction
-	velocity.y += gravity * delta
+	position.y += amplitude * sin (time * frequency)
+	
+	#velocity.y += gravity * delta
 	velocity = move_and_slide(velocity, Vector2.UP)
 
 # Handles parameters passed from enemySpawner.

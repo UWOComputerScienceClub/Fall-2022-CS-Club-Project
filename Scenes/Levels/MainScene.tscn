@@ -59,10 +59,14 @@ tile_data = PoolIntArray( 65535, 1, 0, 16, 1, 0, 131071, 1, 0, 65552, 1, 0, 1966
 
 [node name="EnemySpawner" parent="." instance=ExtResource( 1 )]
 position = Vector2( 25, 486 )
+repeatSpawn = true
 secondsBetweenSpawns = 1.0
+maxSpawns = 1
+enemyType = "Dashing Enemy"
 
 [node name="EnemySpawner2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 36, 157 )
+position = Vector2( 37, 56 )
 repeatSpawn = true
-secondsBetweenSpawns = 2.0
+secondsBetweenSpawns = 0.2
+maxSpawns = 1
 enemyType = "Flying Enemy"
