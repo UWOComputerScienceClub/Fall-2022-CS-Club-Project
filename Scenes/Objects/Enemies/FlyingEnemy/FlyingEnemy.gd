@@ -10,29 +10,50 @@ var amplitude
 var frequency
 
 func _ready():
-	rng.randomize()
 	gravity = 8
 	movement_speed = 200
 	direction = 1
+	
+	hurt = false
+	dead = false
+	hurtTicks = 5
+	deathTicks = 6
+	hurtMultiplier = 1
+	timer = 0
+	
+	rng.randomize()
 	maxHealth = 3
 	amplitude = 6
 	frequency = 11
+	
 	health = maxHealth
-	animationHandler("idle", true)
+	animationHandler("idle", "play")
 	
 func _physics_process(delta):
-	checkLastCollision(delta)
-	surfaceDetection(delta)
 	movementLogic(delta)
+	animationBehavior(delta)
+	hurtBehavior()
+	deathBehavior()
 
 # Handles movement.
 func movementLogic(delta):
 	time += delta
-	velocity.x = movement_speed * direction
+	velocity.x = movement_speed * direction * hurtMultiplier
 	position.y += amplitude * sin (time * frequency)
 	
 	#velocity.y += gravity * delta
 	velocity = move_and_slide(velocity, Vector2.UP)
+
+func animationBehavior(delta):
+
+	if (is_on_floor()):
+		if (!hurt):
+			animationHandler("run", "play")
+
+	if (is_on_wall()):
+		if (lastKinematic2DCollision(delta) != "KinematicBody2D"):
+			direction *= -1
+			$AnimatedSprite.flip_h = !($AnimatedSprite.flip_h)
 
 # Handles parameters passed from enemySpawner.
 func init(a, b):
