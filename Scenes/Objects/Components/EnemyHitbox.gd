@@ -13,7 +13,7 @@ var firstTick = true
 
 func _process(_delta):
 	if (firstTick):
-		# Grab health from enemy script
+		# Grab setup health from enemy script
 		maxHealth = get_parent().maxHealth
 		health = get_parent().health
 		regen = get_parent().regen
@@ -27,9 +27,11 @@ func _on_EnemyHitbox_area_entered(area):
 	elif (area.is_in_group("Snowball")):
 		health -= 1
 		get_parent().hurt = true
+		get_parent().hurtBehavior()
 		updateHealthBar()
 		if (health <= 0):
-			get_parent().queue_free()
+			get_parent().dead = true
+			get_parent().deathBehavior()
 		area.get_parent().queue_free()
 
 # Accesses HealthBar component to update health

@@ -65,8 +65,11 @@ maxSpawns = 1
 enemyType = "Dashing Enemy"
 
 [node name="EnemySpawner2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 37, 56 )
+position = Vector2( 40, 233 )
 repeatSpawn = true
 secondsBetweenSpawns = 0.2
-maxSpawns = 1
 enemyType = "Flying Enemy"
+
+[node name="EnemySpawner3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 680, 426 )
+maxSpawns = 2
