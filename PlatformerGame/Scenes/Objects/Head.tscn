@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Sprites/Snowball/New Piskel-1.png (4).png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Head.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 9.05539
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 19.0
+
+[node name="KinematicBody2D" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.1, 0.1 )
+frames = SubResource( 2 )
+
+[node name="Hitbox" type="Area2D" parent="." groups=["Snowball"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource( 3 )
